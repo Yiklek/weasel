@@ -82,6 +82,15 @@ jobs:
           $ErrorActionPreference = 'Stop'
           .\get-rime.ps1 -use dev
 
+      - name: Get librime-qjs rime
+        shell: bash
+        run: |
+          curl -LO https://github.com/HuangJian/librime-qjs/releases/download/v1.2.0/librime-qjs-5f17ba1-Windows-clang-x64.7z
+          mkdir librime-qjs
+          cd librime-qjs
+          7z x ../librime-qjs-5f17ba1-Windows-clang-x64.7z
+          cp rime.dll ../output
+
       - name: Build data
         shell: pwsh
         run: |
